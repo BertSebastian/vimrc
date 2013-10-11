@@ -26,7 +26,7 @@ map <leader>o :BufExplorer<cr>
 " => MRU plugin
 """"""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+map <leader>m :MRU<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -85,6 +85,16 @@ set grepprg=/bin/grep\ -nH
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
+nnoremap <silent> <F7> :NERDTreeToggle<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Taglist
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let Tlist_Use_Right_Window=1
+let Tlist_Auto_Open=1
+nnoremap <silent> <F8> :TlistToggle<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -99,3 +109,26 @@ let g:multi_cursor_next_key="\<C-s>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => cscope.vim config
+" git clone from github.com/vim-scripts/cscope.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"s: Find this C symbol
+map <leader>fs :call CscopeFind('s', expend('<cword>'))<CR>
+"g: Find this definition
+map <leader>fg :call CscopeFind('g', expend('<cword>'))<CR>
+"d: Find functions called by this function
+map <leader>fd :call CscopeFind('d', expend('<cword>'))<CR>
+"c: Find functions calling this function
+map <leader>fc :call CscopeFind('c', expend('<cword>'))<CR>
+"t: Find this text string
+map <leader>ft :call CscopeFind('t', expend('<cword>'))<CR>
+"e: Find this egrep pattern
+map <leader>fe :call CscopeFind('e', expend('<cword>'))<CR>
+"f: Find this file
+map <leader>ff :call CscopeFind('f', expend('<cword>'))<CR>
+"i: Find files #include this file
+map <leader>fi :call CscopeFind('i', expend('<cword>'))<CR>
+map <leader>l :call ToggleLocationList()<CR>
